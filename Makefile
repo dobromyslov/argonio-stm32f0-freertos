@@ -226,7 +226,7 @@ VPATH     = $(SRCPATHS)
 # Makefile rules
 #
 
-setup:
+subtree_setup:
 	git remote add -f argonio-stm32-cmsis git@github.com:dobromyslov/argonio-stm32-cmsis.git
 	git checkout -b cmsis argonio-stm32-cmsis/4.1
 	git checkout master
@@ -237,6 +237,20 @@ setup:
 	git merge --squash -s subtree --no-commit hal
 	git remote add -f argonio-stm32f0-freertos git@github.com:dobromyslov/argonio-stm32f0-freertos.git
 	git checkout -b freertos argonio-stm32f0-freertos/7.6
+	git checkout master
+	git merge --squash -s subtree --no-commit freertos
+
+subtree_update:
+	git checkout cmsis
+	git pull
+    git checkout master
+	git merge --squash -s subtree --no-commit cmsis
+	git checkout hal
+	git pull
+	git checkout master
+	git merge --squash -s subtree --no-commit hal
+	git checkout freertos
+	git pull
 	git checkout master
 	git merge --squash -s subtree --no-commit freertos
 
