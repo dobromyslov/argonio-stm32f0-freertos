@@ -1,0 +1,6 @@
+.dep/
+.settings/
+build/
+nbproject/
+.cproject
+.project
