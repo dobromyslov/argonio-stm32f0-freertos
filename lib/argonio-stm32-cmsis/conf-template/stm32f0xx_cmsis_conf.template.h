@@ -6,6 +6,7 @@
 #endif /* __cplusplus */
 
 #define STM32F051x8
+//#define USE_HAL_DRIVER
 
 #ifdef __cplusplus
 }
