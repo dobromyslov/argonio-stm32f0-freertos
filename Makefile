@@ -230,15 +230,15 @@ setup:
 	git remote add -f argonio-stm32-cmsis git@github.com:dobromyslov/argonio-stm32-cmsis.git
 	git checkout -b cmsis argonio-stm32-cmsis/4.1
 	git checkout master
-	git read-tree --prefix=lib/argonio-stm32-cmsis -u cmsis
+	git merge --squash -s subtree --no-commit cmsis
 	git remote add -f argonio-stm32f0xx-hal-driver git@github.com:dobromyslov/argonio-stm32f0xx-hal-driver.git
 	git checkout -b hal argonio-stm32f0xx-hal-driver/1.0.1
 	git checkout master
-	git read-tree --prefix=lib/argonio-stm32f0xx-hal-driver -u hal
+	git merge --squash -s subtree --no-commit hal
 	git remote add -f argonio-stm32f0-freertos git@github.com:dobromyslov/argonio-stm32f0-freertos.git
 	git checkout -b freertos argonio-stm32f0-freertos/7.6
 	git checkout master
-	git read-tree --prefix=lib/argonio-stm32f0-freertos -u freertos
+	git merge --squash -s subtree --no-commit freertos
 
 all: $(OBJS) $(OUTFILES) MAKE_ALL_RULE_HOOK
 
