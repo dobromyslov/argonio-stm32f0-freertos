@@ -6,6 +6,7 @@ MCU_MODEL         = STM32F051R8
 
 include ./lib/argonio-stm32-cmsis/argonio-stm32-cmsis.mk
 include ./lib/argonio-stm32f0xx-hal-driver/argonio-stm32f0xx-hal-driver.mk
+include ./lib/argonio-stm32f0-freertos/argonio-stm32f0-freertos.mk
 
 CSRC += src/main.c \
         src/stm32f0xx_hal_msp.c
@@ -224,6 +225,20 @@ VPATH     = $(SRCPATHS)
 #
 # Makefile rules
 #
+
+setup:
+	git remote add -f argonio-stm32-cmsis git@github.com:dobromyslov/argonio-stm32-cmsis.git
+	git checkout -b cmsis argonio-stm32-cmsis/4.1
+	git checkout master
+	git read-tree --prefix=lib/argonio-stm32-cmsis -u cmsis
+	git remote add -f argonio-stm32f0xx-hal-driver git@github.com:dobromyslov/argonio-stm32f0xx-hal-driver.git
+	git checkout -b hal argonio-stm32f0xx-hal-driver/1.0.1
+	git checkout master
+	git read-tree --prefix=lib/argonio-stm32f0xx-hal-driver -u hal
+	git remote add -f argonio-stm32f0-freertos git@github.com:dobromyslov/argonio-stm32f0-freertos.git
+	git checkout -b freertos argonio-stm32f0-freertos/7.6
+	git checkout master
+	git read-tree --prefix=lib/argonio-stm32f0-freertos -u freertos
 
 all: $(OBJS) $(OUTFILES) MAKE_ALL_RULE_HOOK
 
