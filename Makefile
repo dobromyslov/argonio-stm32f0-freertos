@@ -243,7 +243,7 @@ subtree_setup:
 subtree_update:
 	git checkout cmsis
 	git pull
-    git checkout master
+	git checkout master
 	git merge --squash -s subtree --no-commit cmsis
 	git checkout hal
 	git pull
