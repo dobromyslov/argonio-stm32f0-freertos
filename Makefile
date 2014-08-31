@@ -4,8 +4,8 @@ MCU_FAMILY        = STM32F0xx
 MCU_MODEL_FAMILY  = STM32F051x8
 MCU_MODEL         = STM32F051R8
 
-include ./lib/argonio-stm32-cmsis/4.1/argonio-stm32-cmsis.mk
-include ./lib/argonio-stm32f0xx-hal-driver/1.0.1/argonio-stm32f0xx-hal-driver.mk
+include ./lib/argonio-stm32-cmsis/argonio-stm32-cmsis.mk
+include ./lib/argonio-stm32f0xx-hal-driver/argonio-stm32f0xx-hal-driver.mk
 
 CSRC += src/main.c \
         src/stm32f0xx_hal_msp.c
